@@ -1,0 +1,30 @@
+---
+- name: update cache
+  apt:
+    update_cache: yes
+  tags: update
+
+- name: Install nginx
+  package:
+    name: "{{ nginx_service }}"
+    state: present
+  tags: nginx
+
+- name: enable and start nginx
+  service:
+    name: "{{ nginx_service }}"
+    state: started
+    enabled: yes
+  tags: nginx
+
+- name: Install VPN server (openvpn)
+  package:
+    name: "{{ vpn_package }}"
+    state: present
+  tags: vpn
+
+- name: restart nginx
+  service:
+    name: "{{ nginx_service }}"
+    state: restarted
+  tags: returmas

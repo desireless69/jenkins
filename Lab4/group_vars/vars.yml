@@ -1,0 +1,2 @@
+nginx_service: nginx
+vpn_package: openvpn
