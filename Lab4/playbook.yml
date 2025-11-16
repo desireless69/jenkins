@@ -3,12 +3,12 @@
   become: yes
   tasks:
     - name: update cache
-      apt:
+      pacman:
         update_cache: yes
       tags: update
 
     - name: Install nginx
-      package:
+      pacman:
         name: "{{ nginx_service }}"
         state: present
       tags: nginx
@@ -21,7 +21,7 @@
       tags: nginx
 
     - name: Install VPN server (openvpn)
-      package:
+      pacman:
         name: "{{ vpn_package }}"
         state: present
       tags: vpn
